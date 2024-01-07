@@ -1,9 +1,15 @@
 package com.pdaniel.pizza.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "customer")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Customer {
 
     @Id
