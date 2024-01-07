@@ -2,7 +2,6 @@ package com.pdaniel.pizza.service;
 
 import com.pdaniel.pizza.persistence.entity.Pizza;
 import com.pdaniel.pizza.persistence.repository.PizzaRepository;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
