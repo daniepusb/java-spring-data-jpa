@@ -14,10 +14,21 @@ import java.util.List;
 public class OrderService {
     private final OrderRepository orderRepository;
 
-    //TODO: better if try a enum?
-    private static final String DELIVERY = "D";
-    private static final String CARRYOUT = "C";
-    private static final String ON_SITE  = "S";
+    public enum methodType {
+        DELIVERY("D"),
+        CARRYOUT("C"),
+        ON_SITE("S");
+
+        private final String abbreviation;
+
+        methodType(String abbreviation) {
+            this.abbreviation = abbreviation;
+        }
+
+        public String getAbbreviation() {
+            return abbreviation;
+        }
+    }
 
     @Autowired
     public OrderService(OrderRepository orderRepository) {
@@ -34,7 +45,10 @@ public class OrderService {
     }
 
     public List<Order> getOutsideOrders(){
-        List<String> methods = Arrays.asList(DELIVERY,CARRYOUT,ON_SITE);
+        List<String> methods = Arrays.asList(
+                methodType.DELIVERY.getAbbreviation(),
+                methodType.CARRYOUT.getAbbreviation(),
+                methodType.ON_SITE.getAbbreviation());
         return this.orderRepository.findAllByMethodIn(methods);
     }
 
