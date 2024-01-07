@@ -53,4 +53,15 @@ public class PizzaController {
         }
         return ResponseEntity.badRequest().build();
     }
+
+    @GetMapping("/available")
+    public ResponseEntity<List<Pizza>> getAvailable(){
+        return ResponseEntity.ok(this.pizzaService.getAvailable());
+    }
+
+    @GetMapping("/name/{namePizza}")
+    public ResponseEntity<Pizza> getByName(@PathVariable String namePizza){
+        return ResponseEntity.ok(this.pizzaService.getByName(namePizza));
+    }
+
 }
