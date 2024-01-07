@@ -20,6 +20,7 @@ public class PizzaService {
     }
 
     public List<Pizza> getAvailable(){
+        System.out.println(this.pizzaRepository.countByVeganTrue());
         return this.pizzaRepository.findAllByAvailableTrueOrderByPrice();
     }
 
@@ -47,5 +48,9 @@ public class PizzaService {
         return this.pizzaRepository.existsById(idPizza);
     }
 
-    public void delete(int idPizza){ this.pizzaRepository.deleteById(idPizza);}
+    public void delete(int idPizza){ this.pizzaRepository.deleteById(idPizza); }
+
+    public int getVegan(){
+        return this.pizzaRepository.countByVeganTrue();
+    }
 }
