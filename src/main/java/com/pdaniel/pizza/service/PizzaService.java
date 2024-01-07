@@ -2,12 +2,15 @@ package com.pdaniel.pizza.service;
 
 import com.pdaniel.pizza.persistence.entity.Pizza;
 import com.pdaniel.pizza.persistence.repository.PizzaRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class PizzaService {
+    private static final Logger log = LogManager.getLogger(PizzaService.class);
 
     private final PizzaRepository pizzaRepository;
 
@@ -20,7 +23,7 @@ public class PizzaService {
     }
 
     public List<Pizza> getAvailable(){
-        System.out.println(this.pizzaRepository.countByVeganTrue());
+        log.info(this.pizzaRepository.countByVeganTrue());
         return this.pizzaRepository.findAllByAvailableTrueOrderByPrice();
     }
 
