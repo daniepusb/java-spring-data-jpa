@@ -5,10 +5,12 @@ import com.pdaniel.pizza.persistence.projection.OrderSummary;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Repository
 public interface OrderRepository extends ListCrudRepository<Order, Integer> {
     List<Order> findAllByDateAfter(LocalDateTime date);
     List<Order> findAllByMethodIn(List<String> methods);
