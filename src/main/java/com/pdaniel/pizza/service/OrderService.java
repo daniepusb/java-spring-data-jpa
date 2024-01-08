@@ -51,5 +51,9 @@ public class OrderService {
                 methodType.ON_SITE.getAbbreviation());
         return this.orderRepository.findAllByMethodIn(methods);
     }
+    
+    public List<Order> getCustomerOrders(String idCustomer){
+        return this.orderRepository.findByCustomerOrders(idCustomer);
+    }
 
 }

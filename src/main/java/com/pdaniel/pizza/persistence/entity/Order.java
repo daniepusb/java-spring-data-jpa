@@ -42,6 +42,7 @@ public class Order {
     private Customer customer;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    @OrderBy("price DESC")
     private List<OrderItem> items;
 
 }
