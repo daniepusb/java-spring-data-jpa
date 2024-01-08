@@ -1,5 +1,6 @@
 package com.pdaniel.pizza.persistence.entity;
 
+import com.pdaniel.pizza.persistence.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
