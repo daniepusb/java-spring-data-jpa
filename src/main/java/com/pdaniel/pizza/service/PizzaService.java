@@ -3,6 +3,7 @@ package com.pdaniel.pizza.service;
 import com.pdaniel.pizza.persistence.entity.Pizza;
 import com.pdaniel.pizza.persistence.repository.PizzaPagSortRepository;
 import com.pdaniel.pizza.persistence.repository.PizzaRepository;
+import com.pdaniel.pizza.service.dto.UpdatePizzaPriceDto;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -89,6 +91,11 @@ public class PizzaService {
     }
 
     public void delete(int idPizza){ this.pizzaRepository.deleteById(idPizza); }
+
+    @Transactional
+    public void updatePrice(UpdatePizzaPriceDto dto){
+        this.pizzaRepository.updatePrice(dto);
+    }
 
     public int getVegan(){
         return this.pizzaRepository.countByVeganTrue();
