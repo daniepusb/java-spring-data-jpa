@@ -14,6 +14,7 @@
   - MySQL
 - Request call:
   - GET
+    - GET localhost:8080/api/customers/phone/(185) 738-9267
     - GET localhost:8080/api/pizzas
     - GET localhost:8080/api/pizzas/7
     - GET localhost:8080/api/pizzas/name/Festival
@@ -24,12 +25,12 @@
     - GET localhost:8080/api/pizzas/available/higherPrice
     - GET localhost:8080/api/pizzas/available?sortBy=name&sortDirection=DESC
     - GET localhost:8080/api/pizzas/available?sortBy=price&sortDirection=ASC
+    - GET localhost:8080/api/pizzas/cheapest/100
+    - GET localhost:8080/api/pizzas/expensive/20
     - GET localhost:8080/api/pizzas?page=0&elements=15
     - GET localhost:8080/api/orders
     - GET localhost:8080/api/orders/today
     - GET localhost:8080/api/orders/outside
-    - GET localhost:8080/api/pizzas/cheapest/100
-    - GET localhost:8080/api/pizzas/expensive/20
   - POST:
     - POST localhost:8080/api/pizzas
   - PUT:
