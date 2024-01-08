@@ -1,9 +1,14 @@
 package com.pdaniel.pizza.service;
 
 import com.pdaniel.pizza.persistence.entity.Pizza;
+import com.pdaniel.pizza.persistence.repository.PizzaPagSortRepository;
 import com.pdaniel.pizza.persistence.repository.PizzaRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,13 +19,17 @@ public class PizzaService {
     private static final Logger log = LogManager.getLogger(PizzaService.class);
 
     private final PizzaRepository pizzaRepository;
+    private final PizzaPagSortRepository pizzaPagSortRepository;
 
-    public PizzaService(PizzaRepository pizzaRepository) {
+    @Autowired
+    public PizzaService(PizzaRepository pizzaRepository, PizzaPagSortRepository pizzaPagSortRepository) {
         this.pizzaRepository = pizzaRepository;
+        this.pizzaPagSortRepository = pizzaPagSortRepository;
     }
 
-    public List<Pizza> getAll(){
-        return this.pizzaRepository.findAll();
+    public Page<Pizza> getAll(int page, int elements){
+        Pageable pageRequest = PageRequest.of(page,elements);
+        return this.pizzaPagSortRepository.findAll(pageRequest);
     }
 
     public List<Pizza> getAvailable(){
