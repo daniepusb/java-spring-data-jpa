@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PizzaService {
@@ -25,6 +26,28 @@ public class PizzaService {
     public List<Pizza> getAvailable(){
         log.info(this.pizzaRepository.countByVeganTrue());
         return this.pizzaRepository.findAllByAvailableTrueOrderByPrice();
+    }
+
+    public Optional<Pizza> getAvailableLowerPrice(){
+        return Optional.ofNullable(this.pizzaRepository
+                .findFirstByAvailableTrueOrderByPriceAsc()
+                .orElseThrow(() -> new RuntimeException("la pizza no existe")));
+    }
+
+    public Optional<Pizza> getAvailableHigherPrice(){
+        return Optional.ofNullable(this.pizzaRepository
+                .findFirstByAvailableTrueOrderByPriceDesc()
+                .orElseThrow(() -> new RuntimeException("la pizza no existe")));
+    }
+
+    public Optional<List<Pizza>> getCheapest(double price){
+        return this.pizzaRepository
+                .findTop3ByAvailableTrueAndPriceLessThanEqualOrderByPriceAsc(price);
+    }
+
+    public List<Pizza> getExpensive(double price){
+        return this.pizzaRepository
+                .findTop3ByAvailableTrueAndPriceGreaterThanEqualOrderByPriceAsc(price);
     }
 
     public List<Pizza> getWith(String ingredient){

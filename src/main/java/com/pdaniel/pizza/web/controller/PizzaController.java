@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/pizzas")
@@ -59,6 +60,16 @@ public class PizzaController {
         return ResponseEntity.ok(this.pizzaService.getAvailable());
     }
 
+    @GetMapping("/available/lowerPrice")
+    public ResponseEntity<Optional<Pizza>> getAvailableLowerPrice(){
+        return ResponseEntity.ok(this.pizzaService.getAvailableLowerPrice());
+    }
+
+    @GetMapping("/available/higherPrice")
+    public ResponseEntity<Optional<Pizza>> getAvailableHigherPrice(){
+        return ResponseEntity.ok(this.pizzaService.getAvailableHigherPrice());
+    }
+
     @GetMapping("/name/{namePizza}")
     public ResponseEntity<Pizza> getByName(@PathVariable String namePizza){
         return ResponseEntity.ok(this.pizzaService.getByName(namePizza));
@@ -72,5 +83,14 @@ public class PizzaController {
     @GetMapping("/without/{ingredient}")
     public ResponseEntity<List<Pizza>> getWithout(@PathVariable String ingredient){
         return ResponseEntity.ok(this.pizzaService.getWithout(ingredient));
+    }
+
+    @GetMapping("/cheapest/{price}")
+    public ResponseEntity<Optional<List<Pizza>>> getCheapest(@PathVariable double price){
+        return ResponseEntity.ok(this.pizzaService.getCheapest(price));
+    }
+    @GetMapping("/expensive/{price}")
+    public ResponseEntity<List<Pizza>> getExpensive(@PathVariable double price){
+        return ResponseEntity.ok(this.pizzaService.getExpensive(price));
     }
 }
