@@ -37,5 +37,6 @@
       - POST localhost:8080/api/pizzas
     - PUT:
       - PUT localhost:8080/api/pizzas
+      - PUT localhost:8080/api/pizzas/price
     - DEL:
       - DEL localhost:8080/api/pizzas/13
