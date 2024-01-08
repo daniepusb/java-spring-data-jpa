@@ -17,6 +17,7 @@
       - GET localhost:8080/api/customers/phone/(185) 738-9267
       - GET localhost:8080/api/orders/customer/192758012
       - GET localhost:8080/api/orders
+      - GET localhost:8080/api/orders/summary/2
       - GET localhost:8080/api/orders/today
       - GET localhost:8080/api/orders/outside
       - GET localhost:8080/api/pizzas
