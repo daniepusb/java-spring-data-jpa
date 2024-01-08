@@ -22,6 +22,7 @@
     - GET localhost:8080/api/pizzas/available
     - GET localhost:8080/api/pizzas/available/lowerPrice
     - GET localhost:8080/api/pizzas/available/higherPrice
+    - GET localhost:8080/api/pizzas?page=0&elements=15
     - GET localhost:8080/api/orders
     - GET localhost:8080/api/orders/today
     - GET localhost:8080/api/orders/outside
