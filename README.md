@@ -16,13 +16,17 @@
   - GET
     - GET localhost:8080/api/pizzas
     - GET localhost:8080/api/pizzas/7
-    - GET localhost:8080/api/pizzas/available
     - GET localhost:8080/api/pizzas/name/Festival
     - GET localhost:8080/api/pizzas/with/Mozzarella
     - GET localhost:8080/api/pizzas/without/Mozzarella
+    - GET localhost:8080/api/pizzas/available
+    - GET localhost:8080/api/pizzas/available/lowerPrice
+    - GET localhost:8080/api/pizzas/available/higherPrice
     - GET localhost:8080/api/orders
     - GET localhost:8080/api/orders/today
     - GET localhost:8080/api/orders/outside
+    - GET localhost:8080/api/pizzas/cheapest/100
+    - GET localhost:8080/api/pizzas/expensive/20
   - POST:
     - POST localhost:8080/api/pizzas
   - PUT:
