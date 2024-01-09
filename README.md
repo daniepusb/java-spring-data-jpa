@@ -34,6 +34,7 @@
       - GET localhost:8080/api/pizzas/expensive/20
       - GET localhost:8080/api/pizzas?page=0&elements=15
     - POST:
+      - POST localhost:8080/api/orders/random
       - POST localhost:8080/api/pizzas
     - PUT:
       - PUT localhost:8080/api/pizzas
